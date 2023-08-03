@@ -11,8 +11,11 @@ Deno.test("works", () => {
   assertEquals(abbreviateNumber(1.99), "1.9");
   assertEquals(abbreviateNumber(19), "19");
   assertEquals(abbreviateNumber(199), "199");
+  assertEquals(abbreviateNumber(200), "200");
   assertEquals(abbreviateNumber(1999), "1.9k");
+  assertEquals(abbreviateNumber(2000), "2.0k");
   assertEquals(abbreviateNumber(19999), "19k");
+  assertEquals(abbreviateNumber(20000), "20k");
   assertEquals(abbreviateNumber(199999), "199k");
   assertEquals(abbreviateNumber(1999999), "1.9M");
   assertEquals(abbreviateNumber(19999999), "19M");
@@ -31,8 +34,11 @@ Deno.test("works", () => {
   assertEquals(abbreviateNumber(-1.99), "-1.9");
   assertEquals(abbreviateNumber(-19), "-19");
   assertEquals(abbreviateNumber(-199), "-199");
+  assertEquals(abbreviateNumber(-200), "-200");
   assertEquals(abbreviateNumber(-1999), "-1.9k");
+  assertEquals(abbreviateNumber(-2000), "-2.0k");
   assertEquals(abbreviateNumber(-19999), "-19k");
+  assertEquals(abbreviateNumber(-20000), "-20k");
   assertEquals(abbreviateNumber(-199999), "-199k");
   assertEquals(abbreviateNumber(-1999999), "-1.9M");
   assertEquals(abbreviateNumber(-19999999), "-19M");
