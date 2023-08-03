@@ -1,6 +1,7 @@
 # factorio-abbreviate-number
 
-This is a Deno library for abbreviating numbers in the style Factorio does.
+This is a Deno and Node JS/TS library for abbreviating numbers in the style
+Factorio does.
 
 Numbers are abbreviated with a suffix for the order of magnitude (k, M, G) if
 they're great enough. One fraction digit is only shown if there are fewer than 2
@@ -29,13 +30,24 @@ digits and the number has a suffix or a fractional part.
 ## Usage
 
 ```ts
+// Deno
 import { abbreviateNumber } from "https://deno.land/x/factorio_abbreviate_number/mod.ts";
+
+console.log(abbreviateNumber(123456789)); // 123M
+```
+
+```ts
+// Node
+import { abbreviateNumber } from "factorio-abbreviate-number";
 
 console.log(abbreviateNumber(123456789)); // 123M
 ```
 
 ## Documentation
 
-This library is made available on deno.land at
+This library is made available for Deno on deno.land at
 https://deno.land/x/factorio_abbreviate_number, and has documentation pages
 generated at https://deno.land/x/factorio_abbreviate_number/mod.ts.
+
+This library is made available for Node on npm as
+[factorio-abbreviate-number](https://www.npmjs.com/package/factorio-abbreviate-number).
