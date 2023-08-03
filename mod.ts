@@ -3,7 +3,7 @@ const SUFFIXES = ["k", "M", "G"];
 /**
  * Abbreviates numbers in Factorio's style.
  */
-export function abbreviateNumber(x: number, sigFigs = 2) {
+export function abbreviateNumber(x: number, minDigits = 2) {
   const sign = Math.sign(x);
   const absX = Math.abs(x);
 
@@ -17,7 +17,7 @@ export function abbreviateNumber(x: number, sigFigs = 2) {
       break;
     }
   }
-  const flooringFactor = 10 ** (sigFigs - 1);
+  const flooringFactor = 10 ** (minDigits - 1);
   const flooredX = Math.floor(adjustedX * flooringFactor) / flooringFactor;
   const flooredXIsApproximation = flooredX !== adjustedX;
 
@@ -25,11 +25,13 @@ export function abbreviateNumber(x: number, sigFigs = 2) {
 
   const dotIndex = numStr.indexOf(".");
   if (dotIndex === -1) {
-    if (numStr.length < sigFigs && (flooredXIsApproximation || suffix !== "")) {
-      numStr += "." + "0".repeat(sigFigs - numStr.length);
+    if (
+      numStr.length < minDigits && (flooredXIsApproximation || suffix !== "")
+    ) {
+      numStr += "." + "0".repeat(minDigits - numStr.length);
     }
   } else {
-    if (dotIndex >= sigFigs) {
+    if (dotIndex >= minDigits) {
       numStr = numStr.slice(0, dotIndex);
     }
   }
