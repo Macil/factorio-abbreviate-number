@@ -1,19 +1,39 @@
-const SUFFIXES = ["k", "M", "G"];
+const defaultOptions: AbbreviationOptions = {
+  minDigits: 2,
+  suffixes: ["k", "M", "G"],
+};
+
+export interface AbbreviationOptions {
+  /**
+   * @default 2
+   */
+  minDigits: number;
+  /**
+   * @default ["k", "M", "G"]
+   */
+  suffixes: string[];
+}
 
 /**
  * Abbreviates numbers in Factorio's style.
  */
-export function abbreviateNumber(x: number, minDigits = 2) {
+export function abbreviateNumber(
+  x: number,
+  options?: Partial<AbbreviationOptions>,
+) {
+  const effectiveOptions = { ...defaultOptions, ...options };
+  const { minDigits, suffixes } = effectiveOptions;
+
   const sign = Math.sign(x);
   const absX = Math.abs(x);
 
   let adjustedX = absX;
   let suffix = "";
-  for (let i = SUFFIXES.length - 1; i >= 0; i--) {
+  for (let i = suffixes.length - 1; i >= 0; i--) {
     const possibleFactor = 10 ** ((i + 1) * 3);
     if (absX >= possibleFactor) {
       adjustedX = absX / possibleFactor;
-      suffix = SUFFIXES[i];
+      suffix = suffixes[i];
       break;
     }
   }
