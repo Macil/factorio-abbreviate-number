@@ -25,3 +25,17 @@ digits and the number has a suffix or a fractional part.
 | 0.99        | 0.9          |
 | 1.9         | 1.9          |
 | 1.99        | 1.9          |
+
+## Usage
+
+```ts
+import { abbreviateNumber } from "https://deno.land/x/factorio_abbreviate_number/mod.ts";
+
+console.log(abbreviateNumber(123456789)); // 123M
+```
+
+## Documentation
+
+This library is made available on deno.land at
+https://deno.land/x/factorio_abbreviate_number, and has documentation pages
+generated at https://deno.land/x/factorio_abbreviate_number/mod.ts.
