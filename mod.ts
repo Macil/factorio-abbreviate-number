@@ -1,3 +1,6 @@
+// @deno-types="npm:@types/lodash@4/defaults"
+import defaults from "npm:lodash@4/defaults.js";
+
 const defaultOptions: AbbreviationOptions = {
   minDigits: 2,
   suffixes: ["k", "M", "G"],
@@ -21,7 +24,11 @@ export function abbreviateNumber(
   x: number,
   options?: Partial<AbbreviationOptions>,
 ) {
-  const effectiveOptions = { ...defaultOptions, ...options };
+  const effectiveOptions: AbbreviationOptions = defaults(
+    {},
+    options,
+    defaultOptions,
+  );
   const { minDigits, suffixes } = effectiveOptions;
 
   const sign = Math.sign(x);

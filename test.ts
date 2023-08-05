@@ -48,3 +48,11 @@ Deno.test("works", () => {
   assertEquals(abbreviateNumber(-199999999999), "-199G");
   assertEquals(abbreviateNumber(-1999999999999), "-1999G");
 });
+
+Deno.test("custom suffixes", () => {
+  assertEquals(abbreviateNumber(2000, { suffixes: ["x"] }), "2.0x");
+});
+
+Deno.test("undefined options", () => {
+  assertEquals(abbreviateNumber(2000, { suffixes: undefined }), "2.0k");
+});
